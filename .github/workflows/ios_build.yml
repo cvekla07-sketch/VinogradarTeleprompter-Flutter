@@ -20,7 +20,10 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Generate iOS Swift package
+      - name: Pre-generate iOS files
+        run: flutter build ios --config-only --no-codesign
+
+      - name: Pod install
         run: |
           cd ios
           pod install --repo-update
